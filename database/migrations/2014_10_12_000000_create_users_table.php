@@ -18,6 +18,11 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+
+            $table->dateTime('begin_at')->nullable()->comment('停诊开始时间');
+            $table->dateTime('end_at')->nullable()->comment('停诊结束时间');
+            $table->string('remark')->default("")->comment('备注');
+
             $table->rememberToken();
             $table->timestamps();
         });

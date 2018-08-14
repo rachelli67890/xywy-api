@@ -16,3 +16,7 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::post('/login','Usercontroller@postLogin')->name('post.login');
+
+Route::middleware('auth:api')->post('/pause-plus', 'Usercontroller@pausePlus')->name('post.pause.plus');
+Route::middleware('auth:api')->get('/pause-plus', 'Usercontroller@getPausePlus')->name('get.pause.plus');
