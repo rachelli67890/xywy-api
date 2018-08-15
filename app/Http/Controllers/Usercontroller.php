@@ -41,6 +41,13 @@ class Usercontroller extends Controller
     public function getPausePlus()
     {
         $user = Auth::user();
+        return [
+            'code'=>200,
+            'data'=>new \App\Http\Resources\User($user),
+            'meta' => [
+                'test' => 'mata里面可以放其他信息,比如分页url',
+            ],
+        ];
         return new \App\Http\Resources\User($user);
     }
 
@@ -48,6 +55,14 @@ class Usercontroller extends Controller
     {
         $user = Auth::user();
         $user->update(request(['begin_at','end_at','remark']));
+
+        return [
+            'code'=>200,
+            'data'=>new \App\Http\Resources\User($user),
+            'meta' => [
+                'test' => 'mata里面可以放其他信息,比如分页url',
+            ],
+        ];
 
         return new \App\Http\Resources\User($user);
     }
